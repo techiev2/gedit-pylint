@@ -355,9 +355,11 @@ class PylintInstance (object):
         in_tmpFile.write (text)
         in_tmpFile.flush ()
 
-        # build cmdline
-        cmdline = "pylint --include-ids=y --reports=no --output-format=parseable " \
-                  "%s" % in_tmpFile.name
+        # build cmdline - modified
+        cmdline = "pylint -d C0103 --reports=yes --output-format=parseable " \
+                  "%s" % in_tmpFile.name        
+        #cmdline = "pylint --include-ids=y --reports=no --output-format=parseable " \
+        #          "%s" % in_tmpFile.name
 
         # run and capture output
         out_tmpFile = tempfile.NamedTemporaryFile ("w+", suffix=".gedit-pylint")
